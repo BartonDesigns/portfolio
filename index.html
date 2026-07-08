@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<title>Josh Barton · Multidisciplinary Designer</title>
+	<meta name="description" content="SF Bay Area designer working at every scale: Times Square billboards, NHL stadiums, enterprise UX, AI-native product design. Since 2008.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+	<style>
+		/* ============================================================
+		   JOSH BARTON PORTFOLIO
+		   Tokens: paper #F4F5F2 · ink #14161A · blue #1971A5
+		   The blue is salvaged from the original designerjosh.com CSS.
+		   ============================================================ */
+		:root {
+			color-scheme: light; /* Forces the browser to keep it light */
+			--paper: #F4F5F2;
+			--paper-raised: #FBFBFA;
+			--ink: #14161A;
+			--ink-60: rgba(20, 22, 26, 0.78);	/* 8.5:1 on paper, WCAG AA/AAA */
+			--ink-40: rgba(20, 22, 26, 0.66);	/* ~5.6:1 on paper, WCAG AA (was 2.68:1, failing) */
+			--ink-15: rgba(20, 22, 26, 0.15);
+			--ink-08: rgba(20, 22, 26, 0.08);
+			--blue: #1971A5;	/* 4.86:1 on paper, passes AA for text */
+			--blue-deep: #12557D;
+			--blue-tint: rgba(25, 113, 165, 0.08);
+			--display: 'Archivo', -apple-system, sans-serif;
+			--headline: 'IBM Plex Mono', 'SF Mono', monospace;
+			--headline-weight: 700;
+			--headline-tracking: -0.02em;
+			--headline-leading: 0.95;
+			--hero-max: 9.75rem;
+			--mono: 'IBM Plex Mono', 'SF Mono', monospace;
+			--max: 1240px;
+			--pad: clamp(20px, 5vw, 64px);
+		}
+
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+
+		html { scroll-behavior: smooth; }
+		@media (prefers-reduced-motion: reduce) {
+			html { scroll-behavior: auto; }
+			*, *::before, *::after { animation: none !important; transition: none !important; }
+		}
+
+		body {
+			background-color: #FCFCFA; 
+			background-image: 
+				radial-gradient(at 0% 0%, rgba(244, 240, 230, 0.6) 0px, transparent 60%),
+				radial-gradient(at 100% 0%, rgba(25, 113, 165, 0.035) 0px, transparent 50%),
+				radial-gradient(at 100% 100%, rgba(244, 245, 242, 0.8) 0px, transparent 60%),
+				radial-gradient(at 0% 100%, rgba(25, 113, 165, 0.02) 0px, transparent 60%);
+			background-attachment: fixed;
+			background-size: cover;
+			
+			color: var(--ink);
+			font-family: var(--display);
+			font-size: 17px;
+			line-height: 1.55;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		::selection { background: var(--blue); color: #fff; }
+
+		a { color: inherit; }
+		a:focus-visible, button:focus-visible, summary:focus-visible {
+			outline: 2px solid var(--blue);
+			outline-offset: 3px;
+		}
+
+		.mono {
+			font-family: var(--mono);
+			font-size: 0.72rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		/* ---------- header ---------- */
+		header {
+			position: sticky;
+			top: 0;
+			z-index: 50;
+			background: rgba(252, 252, 250, 0.75);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border-bottom: 1px solid var(--ink-15);
+		}
+		.header-inner {
+			max-width: var(--max);
+			margin: 0 auto;
+			padding: 14px var(--pad);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+		}
+		.wordmark {
+			font-family: var(--headline);
+			font-weight: var(--headline-weight);
+			letter-spacing: var(--headline-tracking);
+			text-decoration: none;
+			font-size: 1rem;
+			text-transform: uppercase;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		.wordmark .dot {
+			width: 9px;
+			height: 9px;
+			background: var(--blue);
+			display: inline-block;
+		}
+		nav.site-nav { display: flex; gap: clamp(14px, 3vw, 32px); }
+		nav.site-nav a {
+			font-family: var(--mono);
+			font-size: 0.72rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			text-decoration: none;
+			color: var(--ink-60);
+			padding: 4px 0;
+			border-bottom: 2px solid transparent;
+			transition: color 0.2s, border-color 0.2s;
+		}
+		nav.site-nav a:hover { color: var(--ink); border-bottom-color: var(--blue); }
+		@media (max-width: 700px) {
+			nav.site-nav a {
+				padding: 14px 2px;	/* ~44px effective touch target incl. line height */
+			}
+		}
+
+		/* ---------- hero ---------- */
+		.hero {
+			max-width: var(--max);
+			margin: 0 auto;
+			padding: clamp(56px, 10vh, 130px) var(--pad) clamp(48px, 8vh, 100px);
+		}
+		.hero-eyebrow {
+			font-family: var(--mono);
+			font-size: 0.72rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--blue);
+			margin-bottom: 22px;
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+		.hero-eyebrow::before {
+			content: '';
+			width: 34px;
+			height: 2px;
+			background: var(--blue);
+		}
+		.hero h1 {
+			font-family: var(--headline);
+			font-weight: var(--headline-weight);
+			font-size: clamp(3.2rem, 13vw, var(--hero-max));
+			line-height: var(--headline-leading);
+			letter-spacing: var(--headline-tracking);
+			text-transform: uppercase;
+			animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+		}
+		.hero h1 .row2 { color: var(--blue); }
+		.hero h1 .row2 span { transition: color 1.2s ease; }
+		@keyframes rise {
+			from { opacity: 0; transform: translateY(24px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+		.hero-sub {
+			margin-top: clamp(28px, 5vh, 52px);
+			display: grid;
+			grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+			gap: clamp(24px, 4vw, 64px);
+			align-items: end;
+		}
+		.hero-sub .lede {
+			font-size: clamp(1.1rem, 2vw, 1.45rem);
+			line-height: 1.45;
+			font-weight: 500;
+			max-width: 34ch;
+			text-wrap: balance;
+		}
+		.scale-strip {
+			font-family: var(--mono);
+			font-size: 0.75rem;
+			line-height: 2;
+			color: var(--ink-60);
+			border-left: 2px solid var(--ink-15);
+			padding-left: 18px;
+		}
+		.scale-strip strong { color: var(--ink); font-weight: 500; }
+		@media (max-width: 760px) {
+			.hero-sub { grid-template-columns: 1fr; }
+		}
+
+		/* ---------- section chrome ---------- */
+		section { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+		.section-head {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			gap: 20px;
+			padding: 18px 0 14px;
+			border-bottom: 2px solid var(--ink);
+			margin-bottom: 0;
+		}
+		.section-head h2 {
+			font-family: var(--headline);
+			font-weight: var(--headline-weight);
+			text-transform: uppercase;
+			letter-spacing: var(--headline-tracking);
+			font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+		}
+		.section-head .count {
+			font-family: var(--mono);
+			font-size: 0.75rem;
+			color: var(--ink-40);
+		}
+		.section-gap { height: clamp(72px, 12vh, 140px); }
+
+		/* ---------- work index ---------- */
+		.work-item { border-bottom: 1px solid var(--ink-15); }
+		.work-item summary {
+			list-style: none;
+			cursor: pointer;
+			display: grid;
+			grid-template-columns: 56px minmax(0, 1.6fr) minmax(0, 1fr) 120px 30px;
+			gap: 18px;
+			align-items: baseline;
+			padding: 22px 0;
+			transition: background 0.15s;
+		}
+		.work-item summary::-webkit-details-marker { display: none; }
+		.work-item summary:hover { background: var(--blue-tint); }
+		.work-item summary .num {
+			font-family: var(--mono);
+			font-size: 0.75rem;
+			color: var(--ink-40);
+		}
+		.work-item summary .title {
+			font-weight: 700;
+			font-size: clamp(1.05rem, 2vw, 1.35rem);
+			letter-spacing: -0.01em;
+		}
+		.work-item summary .discipline {
+			font-family: var(--mono);
+			font-size: 0.72rem;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: var(--ink-60);
+		}
+		.work-item summary .year {
+			font-family: var(--mono);
+			font-size: 0.75rem;
+			color: var(--ink-40);
+			text-align: right;
+		}
+		.work-item summary .toggle {
+			font-family: var(--mono);
+			font-size: 1rem;
+			color: var(--blue);
+			text-align: right;
+			transition: transform 0.25s;
+		}
+		.work-item[open] summary .toggle { transform: rotate(45deg); }
+		.work-item[open] summary { background: transparent; }
+		.work-item[open] summary .title { color: var(--blue-deep); }
+
+		.tag {
+			display: inline-block;
+			font-family: var(--mono);
+			font-size: 0.62rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			padding: 2px 7px;
+			border: 1px solid var(--blue);
+			color: var(--blue);
+			border-radius: 2px;
+			margin-left: 10px;
+			vertical-align: middle;
+		}
+		.tag.muted { border-color: var(--ink-40); color: var(--ink-60); }
+
+		.case {
+			padding: 8px 0 56px;
+			animation: caseIn 0.35s ease both;
+		}
+		@keyframes caseIn {
+			from { opacity: 0; transform: translateY(8px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+		.case-grid {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+			gap: clamp(28px, 4vw, 72px);
+		}
+		@media (max-width: 860px) {
+			.case-grid { grid-template-columns: 1fr; }
+			.work-item summary { grid-template-columns: 36px minmax(0, 1fr) 30px; }
+			.work-item summary .discipline, .work-item summary .year { display: none; }
+		}
+		.case .brief p { margin-bottom: 14px; color: var(--ink); max-width: 52ch; }
+		.case .brief p:last-child { margin-bottom: 0; }
+
+		.facts {
+			margin-top: 26px;
+			border-top: 1px solid var(--ink-15);
+		}
+		.facts dl {
+			display: grid;
+			grid-template-columns: 110px 1fr;
+			gap: 8px 18px;
+			padding-top: 14px;
+			font-size: 0.85rem;
+		}
+		.facts dt {
+			font-family: var(--mono);
+			font-size: 0.68rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--ink-40);
+			padding-top: 2px;
+		}
+		.facts dd { color: var(--ink); }
+
+		.outcomes { margin-top: 22px; }
+		.outcomes h4 {
+			font-family: var(--mono);
+			font-size: 0.68rem;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--blue);
+			margin-bottom: 10px;
+		}
+		.outcomes ul { list-style: none; }
+		.outcomes li {
+			padding: 8px 0 8px 22px;
+			position: relative;
+			font-size: 0.95rem;
+			border-bottom: 1px dashed var(--ink-15);
+		}
+		.outcomes li:last-child { border-bottom: none; }
+		.outcomes li::before {
+			content: '→';
+			position: absolute;
+			left: 0;
+			color: var(--blue);
+			font-family: var(--mono);
+		}
+
+		/* ---------- plates (image placeholders) ---------- */
+		.plates { display: grid; gap: 16px; align-content: start; }
+		.plates.two { grid-template-columns: 1fr 1fr; }
+		@media (max-width: 560px) { .plates.two { grid-template-columns: 1fr; } }
+		figure.plate {
+			border: 1px solid var(--ink-15);
+			background: var(--paper-raised);
+		}
+		figure.plate .frame {
+			aspect-ratio: 16 / 10;
+			background:
+				repeating-linear-gradient(
+					-45deg,
+					transparent 0 10px,
+					var(--ink-08) 10px 11px
+				);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+		}
+		figure.plate .frame.tall { aspect-ratio: 4 / 5; }
+		figure.plate .frame .slot-id {
+			font-family: var(--mono);
+			font-size: 0.68rem;
+			letter-spacing: 0.1em;
+			color: var(--ink-40);
+			background: var(--paper-raised);
+			padding: 5px 10px;
+			border: 1px solid var(--ink-15);
+		}
+		figure.plate img,
+		figure.plate video { display: block; width: 100%; height: auto; }
+		figure.plate figcaption {
+			font-family: var(--mono);
+			font-size: 0.68rem;
+			letter-spacing: 0.04em;
+			color: var(--ink-60);
+			padding: 9px 12px;
+			border-top: 1px solid var(--ink-15);
+		}
+
+		/* ---------- capabilities ---------- */
+		.caps {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			border-left: 1px solid var(--ink-15);
+		}
+		@media (max-width: 760px) { .caps { grid-template-columns: 1fr; } }
+		.cap {
+			border-right: 1px solid var(--ink-15);
+			border-bottom: 1px solid var(--ink-15);
+			padding: 28px 24px 32px;
+		}
+		.cap h3 {
+			font-family: var(--headline);
+			font-weight: var(--headline-weight);
+			text-transform: uppercase;
+			font-size: 1.05rem;
+			letter-spacing: var(--headline-tracking);
+			margin-bottom: 12px;
+		}
+		.cap p { font-size: 0.92rem; color: var(--ink-60); }
+		.cap .mono { color: var(--blue); display: block; margin-bottom: 14px; }
+
+		/* ---------- recommendations ---------- */
+		.recs { display: grid; grid-template-columns: 1fr 1fr; }
+		@media (max-width: 760px) { .recs { grid-template-columns: 1fr; } }
+		.rec {
+			padding: 30px 28px 26px;
+			border-bottom: 1px solid var(--ink-15);
+		}
+		.rec:nth-child(odd) { border-right: 1px solid var(--ink-15); }
+		@media (max-width: 760px) { .rec:nth-child(odd) { border-right: none; } }
+		.rec blockquote {
+			font-size: 1.02rem;
+			line-height: 1.5;
+			font-weight: 500;
+			text-wrap: pretty;
+		}
+		.rec blockquote::before { content: '“'; color: var(--blue); }
+		.rec blockquote::after { content: '”'; color: var(--blue); }
+		.rec cite {
+			display: block;
+			margin-top: 14px;
+			font-style: normal;
+			font-family: var(--mono);
+			font-size: 0.7rem;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: var(--ink-40);
+		}
+		.rec cite strong { color: var(--ink); font-weight: 500; }
+		.recs .rec:last-child { border-right: none; }
+		.rec-extra { display: none; }
+		.recs.show-all .rec-extra { display: block; animation: caseIn 0.4s ease both; }
+
+		.show-more-btn {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			gap: 12px;
+			padding: 18px 4px;
+			background: none;
+			border: none;
+			border-bottom: 1px solid var(--ink-15);
+			cursor: pointer;
+			font-family: var(--mono);
+			font-size: 0.75rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--blue);
+			text-align: left;
+			transition: background 0.15s, padding-left 0.2s;
+		}
+		.show-more-btn:hover { background: var(--blue-tint); padding-left: 12px; }
+		.show-more-btn .icon {
+			margin-left: auto;
+			font-size: 1rem;
+			transition: transform 0.25s;
+		}
+		.show-more-btn[aria-expanded="true"] .icon { transform: rotate(45deg); }
+
+		.recs-source {
+			padding: 14px 4px 0;
+			font-family: var(--mono);
+			font-size: 0.68rem;
+			color: var(--ink-40);
+		}
+		.recs-source a { color: var(--blue); }
+
+
+		/* ---------- site search ---------- */
+		.work-item, section, .cap, .rec { scroll-margin-top: 92px; }
+		.search-wrap { position: relative; }
+		.search-input {
+			font-family: var(--mono);
+			font-size: 0.78rem;
+			letter-spacing: 0.03em;
+			color: var(--ink);
+			background: var(--paper-raised) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23696b6c' stroke-width='2.4'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E") no-repeat 10px center;
+			border: 1px solid var(--ink-15);
+			border-radius: 4px;
+			padding: 9px 12px 9px 32px;
+			width: 200px;
+			transition: border-color 0.2s;
+		}
+		.search-input:focus {
+			border-color: var(--blue);
+			outline: none;
+		}
+		.search-input::placeholder { color: var(--ink-40); }
+		.search-results {
+			position: absolute;
+			top: calc(100% + 10px);
+			right: 0;
+			width: min(560px, calc(100vw - 24px));
+			background: var(--paper-raised);
+			border: 1px solid var(--ink-15);
+			border-radius: 6px;
+			box-shadow: 0 16px 44px rgba(20, 22, 26, 0.16);
+			max-height: min(60vh, 520px);
+			overflow-y: auto;
+			z-index: 60;
+		}
+		.search-results[hidden] { display: none; }
+		.search-results ul { list-style: none; margin: 0; padding: 0; }
+		.search-result button {
+			display: block;
+			width: 100%;
+			text-align: left;
+			background: none;
+			border: none;
+			border-bottom: 1px solid var(--ink-15);
+			padding: 13px 16px;
+			cursor: pointer;
+			font-family: var(--display);
+			color: var(--ink);
+		}
+		.search-result:last-child button { border-bottom: none; }
+		.search-result button:hover,
+		.search-result button:focus-visible { background: var(--blue-tint); }
+		.sr-label {
+			font-family: var(--mono);
+			font-size: 0.62rem;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--blue);
+			display: block;
+			margin-bottom: 3px;
+		}
+		.sr-title { font-weight: 700; font-size: 0.95rem; }
+		.sr-snippet {
+			font-size: 0.83rem;
+			color: var(--ink-60);
+			line-height: 1.45;
+			margin-top: 4px;
+		}
+		.sr-snippet mark, .sr-title mark {
+			background: rgba(25, 113, 165, 0.16);
+			color: var(--blue-deep);
+			font-weight: 600;
+			padding: 0 1px;
+			border-radius: 2px;
+		}
+		.sr-empty {
+			padding: 16px;
+			font-family: var(--mono);
+			font-size: 0.72rem;
+			color: var(--ink-60);
+		}
+		.sr-live {
+			position: absolute;
+			width: 1px; height: 1px;
+			overflow: hidden;
+			clip: rect(0 0 0 0);
+			white-space: nowrap;
+		}
+		@keyframes hitFlash {
+			0% { box-shadow: inset 0 0 0 2px var(--blue); }
+			100% { box-shadow: inset 0 0 0 2px transparent; }
+		}
+		.hit-flash { animation: hitFlash 1.6s ease-out; }
+		@media (max-width: 760px) {
+			.header-inner {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) auto;
+				grid-template-areas:
+					"brand search"
+					"nav nav";
+				align-items: center;
+				gap: 10px 14px;
+			}
+			.wordmark {
+				grid-area: brand;
+				min-width: 0;
+			}
+			nav.site-nav {
+				grid-area: nav;
+				width: 100%;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				scrollbar-width: none;
+			}
+			nav.site-nav::-webkit-scrollbar { display: none; }
+			nav.site-nav a { flex: 0 0 auto; }
+			.search-wrap {
+				grid-area: search;
+				justify-self: end;
+				width: auto;
+			}
+			.search-input {
+				width: clamp(44px, 34vw, 170px);
+				max-width: 170px;
+			}
+			.search-input:focus {
+				width: min(56vw, 220px);
+				max-width: 220px;
+			}
+			.search-results {
+				left: auto;
+				right: 0;
+				width: min(560px, calc(100vw - 24px));
+			}
+		}
+
+
+		/* ---------- Level 99 Bard full embed ---------- */
+		.l99-full-showcase,
+		.l99-full-plate,
+		figure.plate .l99-full-frame {
+			min-width: 0;
+			max-width: 100%;
+		}
+		.l99-full-showcase {
+			display: grid;
+			gap: 16px;
+			overflow: hidden;
+		}
+		.l99-full-plate {
+			width: 100%;
+			overflow: hidden;
+		}
+		.l99-full-showcase .l99-full-plate { justify-self: stretch; }
+		figure.plate .l99-full-frame {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: clamp(560px, 58vw, 760px);
+			aspect-ratio: auto;
+			background: #000;
+			overflow: hidden;
+			contain: layout paint;
+		}
+		.l99-full-frame iframe {
+			position: absolute;
+			inset: 0;
+			display: block;
+			width: 100%;
+			height: 100%;
+			max-width: 100%;
+			border: 0;
+			background: #000;
+		}
+		.l99-full-frame iframe:not([src]) { visibility: hidden; }
+		.l99-embed-note {
+			position: absolute;
+			left: 10px;
+			bottom: 10px;
+			z-index: 2;
+			padding: 6px 8px;
+			border-radius: 6px;
+			background: rgba(0,0,0,0.58);
+			color: rgba(255,255,255,0.78);
+			font-family: var(--mono);
+			font-size: 0.62rem;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			pointer-events: none;
+		}
+		.l99-wip-note {
+			margin-top: 18px;
+			padding: 12px 14px;
+			border-left: 2px solid var(--blue);
+			background: var(--blue-tint);
+			font-size: 0.92rem;
+			color: var(--ink-60);
+		}
+		@media (max-width: 860px) {
+			figure.plate .l99-full-frame { height: min(760px, 78vh); }
+		}
+
+		/* ---------- contact ---------- */
+		footer {
+			margin-top: clamp(80px, 14vh, 160px);
+			background: var(--ink);
+			color: var(--paper);
+		}
+		.footer-inner {
+			max-width: var(--max);
+			margin: 0 auto;
+			padding: clamp(56px, 9vh, 110px) var(--pad) calc(48px + env(safe-area-inset-bottom));
+		}
+		.footer-inner .cta {
+			font-family: var(--headline);
+			font-weight: var(--headline-weight);
+			text-transform: uppercase;
+			font-size: clamp(2rem, 6.5vw, 4.8rem);
+			line-height: var(--headline-leading);
+			letter-spacing: var(--headline-tracking);
+			margin-bottom: 44px;
+		}
+		.footer-inner .cta span { color: var(--blue); }
+		.contact-rows { border-top: 1px solid rgba(255,255,255,0.2); }
+		.contact-rows a {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			gap: 16px;
+			padding: 18px 0;
+			border-bottom: 1px solid rgba(255,255,255,0.2);
+			text-decoration: none;
+			transition: padding-left 0.2s;
+		}
+		.contact-rows a:hover { padding-left: 12px; }
+		.contact-rows a:hover .value { color: #fff; }
+		.contact-rows .label {
+			font-family: var(--mono);
+			font-size: 0.7rem;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: rgba(255,255,255,0.62);	/* 7.45:1 on ink, WCAG AA */
+		}
+		.contact-rows .value {
+			font-weight: 700;
+			font-size: clamp(0.95rem, 2.4vw, 1.3rem);
+			color: rgba(255,255,255,0.85);
+			transition: color 0.2s;
+			word-break: break-all;
+			text-align: right;
+		}
+		.colophon {
+			margin-top: 40px;
+			font-family: var(--mono);
+			font-size: 0.68rem;
+			letter-spacing: 0.06em;
+			color: rgba(255,255,255,0.62);	/* was 0.4 = 3.82:1 FAIL, now 7.45:1 */
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+	</style>
+</head>
+<body>
+
+	<header>
+		<div class="header-inner">
+			<a class="wordmark" href="#top"><span class="dot" aria-hidden="true"></span>JOSH BARTON</a>
+			<nav class="site-nav" aria-label="Site">
+				<a href="#work">Work</a>
+				<a href="#lab">Lab</a>
+				<a href="#capabilities">Capabilities</a>
+				<a href="#recommendations">References</a>
+				<a href="#contact">Contact</a>
+			</nav>
+			<div class="search-wrap">
+				<input type="search" class="search-input" id="siteSearch" placeholder="Search the work" aria-label="Search this site" autocomplete="off">
+				<div class="search-results" id="searchResults" hidden></div>
+				<span class="sr-live" id="searchLive" aria-live="polite"></span>
+			</div>
+		</div>
+	</header>
+
+	<main id="top">
+
+		<!-- ================= HERO ================= -->
+		<div class="hero">
+			<p class="hero-eyebrow">SF Bay Area · Designing since 2008</p>
+			<h1 aria-label="Josh Barton">
+				<span class="row1" aria-hidden="true">Josh</span><br>
+				<span class="row2" id="brandCycle" aria-hidden="true"><span>B</span><span>A</span><span>R</span><span>T</span><span>O</span><span>N</span></span>
+			</h1>
+			<div class="hero-sub">
+				<p class="lede">Multidisciplinary designer with a hackathon mentality and a solid foundation of professional design experience.</p>
+				<div class="scale-strip" aria-label="Range of work by scale">
+					WORKS AT EVERY SCALE<br>
+					<strong>Times Square billboards</strong> · 1,000&nbsp;sq&nbsp;ft<br>
+					<strong>NHL stadium graphics</strong> · broadcast<br>
+					<strong>Enterprise UX systems</strong> · 1,440&nbsp;px<br>
+					<strong>AI-native product design</strong> · tokens
+				</div>
+			</div>
+		</div>
+
+		<!-- ================= WORK INDEX ================= -->
+		<section id="work" aria-labelledby="work-heading">
+			<div class="section-head">
+				<h2 id="work-heading">Selected Work</h2>
+				<span class="count">09 projects · 2008 to present</span>
+			</div>
+
+			<!-- 01 · APPLE AI + UX -->
+			<details class="work-item">
+				<summary>
+					<span class="num">01</span>
+					<span class="title">Apple · AI-Orchestrated Design</span>
+					<span class="discipline">Web · Presentation · Instructional · AI</span>
+					<span class="year">2025-2026</span>
+					<span class="toggle" aria-hidden="true">+</span>
+				</summary>
+				<div class="case">
+					<div class="case-grid">
+						<div class="brief">
+							<p>At Apple I work across web, presentation, and instructional design, with AI as the primary execution layer. A web design foundation going back to 2008 keeps the output honest: no AI slop, no hallucinations, no vanity metrics. Claude, OpenAI, and Gemini handle the intense development while I focus on functionality, correctness, and quality.</p>
+							<p>As the team's go-to for UX and AI, I keep a human designer in control at every step: frame the audience, direct the model, review by hand, ship the asset plus the reusable system behind it. Deliverables below are generalized to protect confidential detail.</p>
+							<div class="facts">
+								<dl>
+									<dt>Role</dt><dd>Designer / AI orchestrator</dd>
+									<dt>Disciplines</dt><dd>Instructional · presentation · web · AI orchestration</dd>
+									<dt>Tools</dt><dd>Claude Code · Claude · OpenAI · Gemini</dd>
+									<dt>Process</dt><dd>Frame → Direct → Review → Ship</dd>
+									<dt>Detail</dt><dd>Generalized; specifics available on request</dd>
+								</dl>
+							</div>
+							<div class="outcomes">
+								<h4>Representative deliverables</h4>
+								<ul>
+									<li>Single-file interactive HTML courses with custom icon systems, authored from raw source material into structured curriculum</li>
+									<li>Standards-conformant e-learning packages (completion, scoring, bookmarking) plus print handouts from the same source</li>
+									<li>Programmatic branded decks and reusable template/component libraries that keep quality independent of any one person</li>
+									<li>Internal browser tools with per-user authentication, so credentials and data stay with the individual</li>
+									<li>Methods, prompts, and workflows using Claude Code, Claude, OpenAI, and Gemini, shared openly so AI fluency spreads across the team instead of living in one person</li>
+								</ul>
+							</div>
+						</div>
+						<div class="plates">
+							<figure class="plate">
+								<svg viewBox="0 0 800 560" role="img" aria-label="Apple logo above an abstract grey wireframe standing in for internal UI that cannot be shown" style="display:block;width:100%;height:auto;background:#FBFBFA">
+									<g transform="translate(345, 48) scale(4.6)">
+										<path fill="#14161A" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702"/>
+									</g>
+									<text x="400" y="200" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="15" letter-spacing="3" fill="#696B6C">INTERNAL UI · CANNOT BE SHOWN</text>
+									<rect x="80" y="240" width="640" height="280" rx="10" fill="none" stroke="#D8D9D6" stroke-width="2"/>
+									<rect x="80" y="240" width="640" height="42" rx="10" fill="#E7E8E5"/>
+									<rect x="80" y="272" width="640" height="10" fill="#E7E8E5"/>
+									<circle cx="106" cy="261" r="5" fill="#D0D1CE"/>
+									<circle cx="124" cy="261" r="5" fill="#D0D1CE"/>
+									<circle cx="142" cy="261" r="5" fill="#D0D1CE"/>
+									<rect x="560" y="252" width="140" height="18" rx="9" fill="#D8D9D6"/>
+									<rect x="100" y="302" width="132" height="198" rx="6" fill="#EDEEEB"/>
+									<rect x="114" y="318" width="104" height="12" rx="6" fill="#D8D9D6"/>
+									<rect x="114" y="344" width="84" height="10" rx="5" fill="#E0E1DE"/>
+									<rect x="114" y="366" width="94" height="10" rx="5" fill="#E0E1DE"/>
+									<rect x="114" y="388" width="74" height="10" rx="5" fill="#E0E1DE"/>
+									<rect x="114" y="410" width="88" height="10" rx="5" fill="#E0E1DE"/>
+									<rect x="256" y="308" width="260" height="18" rx="9" fill="#D8D9D6"/>
+									<rect x="256" y="340" width="440" height="10" rx="5" fill="#E7E8E5"/>
+									<rect x="256" y="360" width="400" height="10" rx="5" fill="#E7E8E5"/>
+									<rect x="256" y="380" width="424" height="10" rx="5" fill="#E7E8E5"/>
+									<rect x="256" y="412" width="212" height="88" rx="8" fill="#EDEEEB"/>
+									<rect x="272" y="428" width="120" height="12" rx="6" fill="#D8D9D6"/>
+									<rect x="272" y="452" width="176" height="9" rx="4" fill="#E0E1DE"/>
+									<rect x="272" y="470" width="150" height="9" rx="4" fill="#E0E1DE"/>
+									<rect x="484" y="412" width="212" height="88" rx="8" fill="#EDEEEB"/>
+									<rect x="500" y="428" width="120" height="12" rx="6" fill="#D8D9D6"/>
+									<rect x="500" y="452" width="176" height="9" rx="4" fill="#E0E1DE"/>
+									<rect x="500" y="470" width="150" height="9" rx="4" fill="#E0E1DE"/>
+								</svg>
+								<figcaption>Internal Apple UI: the real work stays inside, this is the shape of it</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</details>
+
+			<!-- 02 · PAYPAL -->
+			<details class="work-item">
+				<summary>
+					<span class="num">02</span>
+					<span class="title">PayPal · Developer Platform Engineering</span>
+					<span class="discipline">Content Design · Web · Brand</span>
+					<span class="year">2025-2026</span>
+					<span class="toggle" aria-hidden="true">+</span>
+				</summary>
+				<div class="case">
+					<div class="case-grid">
+						<div class="brief">
+							<p>As Content Designer III on PayPal's Developer Platform Engineering team, I bridged design and development: custom-coded interfaces, executive communications, and brand systems serving PayPal's developer ecosystem.</p>
+							<p>The flagship build: PayPal's internal platform started life as a basic SharePoint data dump. I rebuilt it into a fully fledged responsive website with dynamic custom HTML, CSS, and JS running inside SharePoint's constraints, carrying live status updates and key event communications, all on brand.</p>
+							<p>Beyond the platform, I designed executive presentations and event branding for All Hands and leadership communications, maintained PayPal's design system following Pentagram's brand refresh principles, produced technical documentation and style guides, and built data visualizations for Strategy &amp; Vision initiatives.</p>
+							<div class="facts">
+								<dl>
+									<dt>Role</dt><dd>Content Designer III · Developer Platform Engineering</dd>
+									<dt>Period</dt><dd>Aug 2025 to Jan 2026 · San Jose, hybrid</dd>
+									<dt>Stack</dt><dd>SharePoint · custom HTML, CSS, JS</dd>
+									<dt>Brand</dt><dd>Pentagram brand refresh implementation</dd>
+									<dt>Audience</dt><dd>Developers · C-suite · global teams</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="plates">
+							<figure class="plate">
+								<div class="frame"><span class="slot-id">PLATE 02-A · SITE</span></div>
+								<figcaption>Rebuilt internal platform (internal work, shareable crop coming)</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</details>
+
+			<!-- 03 · PRAXISLEARNING -->
+			<details class="work-item">
+				<summary>
+					<span class="num">03</span>
+					<span class="title">PraxisLearning Website</span>
+					<span class="discipline">UI · Web</span>
+					<span class="year">2025</span>
+					<span class="toggle" aria-hidden="true">+</span>
+				</summary>
+				<div class="case">
+					<div class="case-grid">
+						<div class="brief">
+							<p>Designed the UI for the PraxisLearning website: a learning-journeys platform that turns training events into daily practice. The design carries my decade-plus of LMS and e-learning domain knowledge into the brand, narrative, and layout decisions, from the homepage story through the demo funnel.</p>
+							<div class="facts">
+								<dl>
+									<dt>Role</dt><dd>UI / web designer</dd>
+									<dt>Scope</dt><dd>Site design, visual system, responsive layouts</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="plates two">
+							<figure class="plate">
+								<img src="assets/praxis-desktop.jpg" alt="PraxisLearning homepage: hero reading The practice engine your program is missing, with a learning journey product screenshot and a 1% of their day stat section" loading="lazy">
+								<figcaption>Homepage as shipped, 2025 (the live site has since evolved)</figcaption>
+							</figure>
+							<figure class="plate">
+								<img src="assets/praxis-mobile.jpg" alt="PraxisLearning mobile view: Used across industries section with customer logos including US Fish and Wildlife and UC Davis CPE, above the demo request form" loading="lazy">
+								<figcaption>Mobile: industry proof and the demo funnel</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</details>
+
+			<!-- 04 · LITMOS UX / UI -->
+			<details class="work-item">
+				<summary>
+					<span class="num">04</span>
+					<span class="title">Litmos · UX &amp; UI Design</span>
+					<span class="discipline">UX Case Studies · Product</span>
+					<span class="year">2016-2024</span>
+					<span class="toggle" aria-hidden="true">+</span>
+				</summary>
+				<div class="case">
+					<div class="case-grid">
+						<div class="brief">
+							<p>Seven years of product design across the Litmos LMS on web, iOS, and Android. Two flagship case studies below, plus the course tile system that themed the entire training catalog.</p>
+							<p><strong>The navigation problem.</strong> Admins needed special training just to find features; key functions were buried 3 to 9 clicks deep, split across separate Admin and Learner views. I led the redesign of a unified meganav, grounded in persona interviews, card sorting, and usage analytics. Nearly every area of the platform landed one click away, for every role, with no view switching.</p>
+							<p><strong>The Live Training Calendar.</strong> The old calendar was view-only: no filters, no discovery, no registration. I led the rebuild end to end, including sourcing the base tool (MobiScroll), and shipped a calendar that met the LennyKit design system, worked in React and Bootstrap 5, and did what learners expected: find a session, see the details, register, done.</p>
+							<p><strong>Course tile design.</strong> A branded tile system for the Litmos product training journey: one visual language across the whole catalog, built so learners could identify course areas and themes at a glance.</p>
+							<div class="facts">
+								<dl>
+									<dt>Role</dt><dd>Lead UX designer</dd>
+									<dt>Research</dt><dd>Persona interviews · card sorting · usage analytics</dd>
+									<dt>Constraints</dt><dd>LennyKit design system · React + Bootstrap 5 · WCAG</dd>
+									<dt>Platforms</dt><dd>Web · iOS · Android</dd>
+								</dl>
+							</div>
+							<div class="outcomes">
+								<h4>Outcomes</h4>
+								<ul>
+									<li>Average clicks to key features: 5 down to 1 or 2, with roughly 60% navigation time savings in testing</li>
+									<li>Unified Admin and Learner views, no more profile switching</li>
+									<li>1 to 2 click session registration, plus the filters and search every interviewed user asked for</li>
+									<li>Month, week, day, multi-day, and list calendar views, fully responsive</li>
+									<li>Accessibility-vendor verified across the board</li>
+								</ul>
+							</div>
+						</div>
+						<div class="plates">
+							<figure class="plate">
+								<img src="assets/litmos-meganav.png" alt="Litmos unified mega-navigation fully expanded: Global Library, People, Teams, Reporting, and Features and Setup groups, every destination one click deep" loading="lazy">
+								<figcaption>The unified meganav, expanded: every admin and learner destination one click deep</figcaption>
+							</figure>
+							<figure class="plate">
+								<img src="assets/litmos-calendar.png" alt="Redesigned Litmos Live Sessions calendar: month view with registration status filters, session type, location and instructor filters, color-coded completed, registered and waitlisted sessions" loading="lazy">
+								<figcaption>The updated Live Sessions calendar: filters, search, and registration status at a glance</figcaption>
+							</figure>
+							<figure class="plate">
+								<img src="assets/litmos-dojo-tiles.jpg" alt="Grid of twenty Litmos course tile designs: gradient iconography, belt badges, and Salesforce integration art" loading="lazy">
+								<figcaption>Course tile system: one branded visual language for instant learner recognition</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</details>
+
+			<!-- 05 · LITMOS L&D + COURSE DESIGN -->
+			<details class="work-item">
+				<summary>
+					<span class="num">05</span>
+					<span class="title">Litmos · L&amp;D Training &amp; Course Design</span>
+					<span class="discipline">Instructional · Motion · Video</span>
+					<span class="year">2016-2024</span>
+					<span class="toggle" aria-hidden="true">+</span>
+				</summary>
+				<div class="case">
+					<div class="case-grid">
+						<div class="brief">
+							<p>Before my product design role at Litmos, I partnered with the Chief Learning Officer to write, design, and produce the full Litmos Dojo curriculum: the black-belt program that turned customers into platform senseis. Day to day spanned course writing, SCORM authoring, visual design, and video editing.</p>
+							<p>The animation work was handcrafted from concept to final production in After Effects and Premiere. We also shot live skits in a professional studio with cinematic camera and lighting rigs to make product release training fun to watch.</p>
+							<div class="facts">
+								<dl>
+									<dt>Role</dt><dd>Instructional designer · content creator</dd>
+									<dt>Tools</dt><dd>After Effects · Premiere · Camtasia · studio production</dd>
+									<dt>Extras</dt><dd>Dojo badge system · SCORM authoring · audio licensing</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="plates">
+							<figure class="plate">
+								<video controls preload="metadata" poster="assets/course-animation-poster.jpg" aria-label="Animated Litmos course video, six minutes and forty-eight seconds">
+									<source src="assets/course-animation-reel.mp4" type="video/mp4">
+								</video>
+								<figcaption>Animated course video: handcrafted in After Effects, concept to final production (6:48)</figcaption>
+							</figure>
+							<figure class="plate">
+								<img src="assets/litmos-devices.jpg" alt="SAP Litmos Dojo training portal shown across desktop, laptop, tablet and phone, with a framed Dojo Black Belt certificate for Josh Barton" loading="lazy">
+								<figcaption>The Litmos Dojo curriculum across devices, including my own Black Belt certificate</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</details>
+
+			<!-- 06 · GOOGLE 20% -->
+			<details class="work-item">
+				<summary>
+					<span class="num">06</span>
+					<span class="title">Google · Aha! Research Hub (20% Project)</span>
+					<span class="discipline">UX · Internal Tools</span>
+					<span class="year">2014 / 2018</span>
+					<span class="toggle" aria-hidden="true">+</span>
+				</summary>
+				<div class="case">
+					<div class="case-grid">
+						<div class="brief">
+							<p>While on a visual design contract at Google, I noticed researchers fighting a dense spreadsheet to find insights. So I concepted and shipped a 20% project: the Aha! Global Insights &amp; Research Hub, integrating multiple internal tools into one searchable interface.</p>
+							<p>Search results rendered as scannable "3×5 notecards", up to 15 at a glance, with filtering and sorting that cut the time to find relevant data significantly. Google brought me back in 2018 to design the global awareness campaign: posters, templates, and team swag distributed across offices worldwide.</p>
+							<div class="facts">
+								<dl>
+									<dt>Role</dt><dd>Concept, UX, and UI, self-initiated</dd>
+									<dt>Longevity</dt><dd>Live internally at go/AHA from 2014 for roughly a decade</dd>
+									<dt>Encore</dt><dd>2018 global awareness campaign design</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="plates two">
+							<figure class="plate">
+								<img src="assets/aha-poster-43days.jpg" alt="go/aha awareness poster: 43 days per year spent in apps, an insight sourced from the Aha! research hub" loading="lazy">
+								<figcaption>2018 go/aha awareness campaign poster</figcaption>
+							</figure>
+							<figure class="plate">
+								<img src="assets/aha-poster-kfc.jpg" alt="go/aha awareness poster: Eat KFC for Christmas, a Japan fast-food insight sourced from the Aha! research hub" loading="lazy">
+								<figcaption>Insight posters distributed across Google offices globally (product UI under NDA)</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</details>
+
+			<!-- 07 · TIMES SQUARE -->
+			<details class="work-item">
+				<summary>
+					<span class="num">07</span>
+					<span class="title">CoolSculpting · Times Square Launch Campaign</span>
+					<span class="discipline">Brand · Advertising</span>
+					<span class="year">2015-2016</span>
+					<span class="toggle" aria-hidden="true">+</span>
+				</summary>
+				<div class="case">
+					<div class="case-grid">
+						<div class="brief">
+							<p>Designed the NYC Times Square billboard campaign for the launch of CoolSculpting.com: a multi-channel push spanning outdoor, social, and national print placements in People, Allure, and MORE magazines.</p>
+							<div class="facts">
+								<dl>
+									<dt>Role</dt><dd>Campaign designer</dd>
+									<dt>Channels</dt><dd>Times Square billboards · NYC transit · national print · social</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="plates">
+							<figure class="plate">
+								<img src="assets/coolsculpting-times-square.jpg" alt="CoolSculpting billboards lit up at night over the Rainbow store corner in Times Square, New York" loading="lazy">
+								<figcaption>Launch billboards in situ: Times Square, NYC</figcaption>
+							</figure>
+							<div class="plates two">
+								<figure class="plate">
+									<img src="assets/coolsculpting-times-square-2.jpg" alt="Vertical CoolSculpting billboard in Times Square alongside Broadway and retail signage" loading="lazy">
+									<figcaption>Second Times Square placement</figcaption>
+								</figure>
+								<figure class="plate">
+									<img src="assets/coolsculpting-subway.jpg" alt="CoolSculpting ad above the 116 Street Columbia University subway station entrance" loading="lazy">
+									<figcaption>NYC transit placement: 116 St / Columbia</figcaption>
+								</figure>
+							</div>
+						</div>
+					</div>
+				</div>
+			</details>
+
+			<!-- 08 · NHL -->
+			<details class="work-item">
+				<summary>
+					<span class="num">08</span>
+					<span class="title">NHL Winter Classic &amp; Stadium Series</span>
+					<span class="discipline">Environmental · Broadcast</span>
+					<span class="year">2014</span>
+					<span class="toggle" aria-hidden="true">+</span>
+				</summary>
+				<div class="case">
+					<div class="case-grid">
+						<div class="brief">
+							<p>Stadium-sized environmental graphics for live, nationally televised NHL events: design that has to read from the nosebleeds, on camera, and in person simultaneously.</p>
+							<p>For the 2014 Winter Classic at Michigan Stadium, I had hands on virtually every stadium visual in the venue, from mega-banners down to rink-side signage, plus dasher boards and environmental graphics for the Stadium Series at Soldier Field.</p>
+							<div class="facts">
+								<dl>
+									<dt>Role</dt><dd>Environmental graphics designer</dd>
+									<dt>Events</dt><dd>2014 Winter Classic · 2014 Stadium Series</dd>
+									<dt>Scale</dt><dd>Stadium-scale, broadcast-visible, live TV</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="plates">
+							<figure class="plate">
+								<img src="assets/nhl-stadium-series-gameday.jpg" alt="Snow falling over the outdoor rink at Soldier Field during the 2014 NHL Stadium Series, packed stadium under the lights" loading="lazy">
+								<figcaption>Game day: 2014 Stadium Series, Soldier Field, in a snowstorm on national TV</figcaption>
+							</figure>
+							<div class="plates two">
+								<figure class="plate">
+									<img src="assets/nhl-stadium-series-logo.jpg" alt="2014 NHL Stadium Series Chicago logo graphic on the rink-side boards with fans behind" loading="lazy">
+									<figcaption>Rink-side event graphics</figcaption>
+								</figure>
+								<figure class="plate">
+									<img src="assets/nhl-winter-classic-banners.jpg" alt="Toronto Maple Leafs, 2014 Winter Classic, and Detroit Red Wings vertical banners hung on the stadium facade" loading="lazy">
+									<figcaption>Winter Classic team banners on the venue facade</figcaption>
+								</figure>
+							</div>
+							<figure class="plate">
+								<img src="assets/nhl-winter-classic.jpg" alt="2014 NHL Winter Classic environmental graphics installed at Michigan Stadium" loading="lazy">
+								<figcaption>2014 Winter Classic: graphics in place at The Big House</figcaption>
+							</figure>
+							<figure class="plate">
+								<video controls preload="metadata" poster="assets/winter-classic-2014-poster.jpg" aria-label="2014 Winter Classic game day production capture, thirty seconds">
+									<source src="assets/winter-classic-2014-reel.mp4" type="video/mp4">
+								</video>
+								<figcaption>Game day production capture: my graphics live across the venue (0:30)</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</details>
+
+			<!-- 09 · STEALTH AI APP -->
+			<details class="work-item">
+				<summary>
+					<span class="num">09</span>
+					<span class="title">AI-Embedded Event Learning Platform <span class="tag">Stealth</span></span>
+					<span class="discipline">Product Design · AI</span>
+					<span class="year">2025-2026</span>
+					<span class="toggle" aria-hidden="true">+</span>
+				</summary>
+				<div class="case">
+					<div class="case-grid">
+						<div class="brief">
+							<p>End-to-end design of an AI-embedded application for the learning and large-event industry. I own the product design from concept through UI, with AI woven into the core workflows rather than bolted on.</p>
+							<p>Claude powers the system's extremely complex backend, while the front end delivers AI-driven training and live updates. Users lean on AI to create content rapidly and let it do the heavy lifting across the app.</p>
+							<p>The product is in stealth and I'm under NDA, so that's all I can share for now.</p>
+							<div class="facts">
+								<dl>
+									<dt>Role</dt><dd>Founding product designer, end-to-end</dd>
+									<dt>Scope</dt><dd>Product strategy · UX · UI · AI interaction design</dd>
+									<dt>AI</dt><dd>Claude-powered backend · AI content creation · live updates</dd>
+									<dt>Status</dt><dd>In stealth, under NDA</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="plates">
+							<figure class="plate">
+								<div class="frame"><span class="slot-id">PLATE 09-A · REDACTED / NDA</span></div>
+								<figcaption>Details withheld under NDA; public teaser when the product launches</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</details>
+		</section>
+
+		<div class="section-gap"></div>
+
+		<!-- ================= LAB ================= -->
+		<section id="lab" aria-labelledby="lab-heading">
+			<div class="section-head">
+				<h2 id="lab-heading">The Lab</h2>
+				<span class="count">After-hours builds</span>
+			</div>
+			<details class="work-item l99-lab-item" open>
+				<summary>
+					<span class="num">L1</span>
+					<span class="title">Level 99 Bard <span class="tag">One HTML file</span></span>
+					<span class="discipline">Synth · WebGL · Personal Build</span>
+					<span class="year">Ongoing</span>
+					<span class="toggle" aria-hidden="true">+</span>
+				</summary>
+				<div class="case">
+					<div class="case-grid">
+						<div class="brief">
+							<p>A polyphonic synthesizer and DAW fused with a WebGL space-flight game, all inside one self-contained HTML file. The media panel embeds the current full vox130 build directly, so the real faceplate, synth controls, and visualizer are available in place.</p>
+							<p>Fly over a procedurally generated San Francisco and Monterey Bay world built from real bathymetric survey data, under a working solar and lunar system with live weather, while a Game Boy-skinned synth engine scores the flight.</p>
+							<p>This is what I do for fun in my spare time: experiment with the tools that are out there, test what they can actually do, and see what I can build.</p>
+							<p class="l99-wip-note"><strong>Work in progress:</strong> this is an active personal build. Parts of the synth, visualizer, and flight systems may shift as I keep testing and refining the project.</p>
+							<div class="facts">
+								<dl>
+									<dt>Stack</dt><dd>Three.js · Web Audio · vanilla JS · zero build step</dd>
+									<dt>Form</dt><dd>Current full vox130 HTML build preloaded in the background and embedded in the portfolio</dd>
+									<dt>UI</dt><dd>Single bounded playable media panel; diagnostics hidden unless enabled from the menu</dd>
+									<dt>World</dt><dd>Real SF Bay bathymetric data, georeferenced</dd>
+									<dt>Status</dt><dd>In active development</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="plates l99-full-showcase">
+							<figure class="plate l99-full-plate">
+								<div class="frame l99-full-frame">
+									<iframe data-src="lvl99bard.html" title="Playable Level 99 Bard current vox130 build" loading="eager" allow="autoplay; fullscreen; microphone; clipboard-read; clipboard-write"></iframe>
+									<span class="l99-embed-note">Preloading after page load · click inside to play</span>
+								</div>
+								<figcaption>Live embedded current build: one full playable Level 99 Bard copy, cropped to the media display.</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</details>
+		</section>
+
+		<div class="section-gap"></div>
+
+		<!-- ================= CAPABILITIES ================= -->
+		<section id="capabilities" aria-labelledby="caps-heading">
+			<div class="section-head">
+				<h2 id="caps-heading">Capabilities</h2>
+				<span class="count">What I do</span>
+			</div>
+			<div class="caps">
+				<div class="cap">
+					<span class="mono">01 · Product</span>
+					<h3>UX &amp; Product Design</h3>
+					<p>Research-driven design for complex enterprise systems. Personas, card sorts, usage data, design systems, accessibility, then shipped UI in React. Formal UX training via General Assembly, sharpened over 7 years inside an LMS used by millions.</p>
+				</div>
+				<div class="cap">
+					<span class="mono">02 · Visual</span>
+					<h3>Brand, Print &amp; Motion</h3>
+					<p>Career visual designer and animator. Times Square billboards, national magazine ads, NHL stadium graphics, TV spots, and handcrafted motion work from concept through final production.</p>
+				</div>
+				<div class="cap">
+					<span class="mono">03 · Build</span>
+					<h3>AI-Native Building</h3>
+					<p>Hackathon mentality, production discipline. I direct AI tooling, Claude Code and agentic workflows, to design, code, and ship simultaneously. HTML/CSS/JS fluency means my designs arrive working, not as handoff files.</p>
+				</div>
+			</div>
+		</section>
+
+		<div class="section-gap"></div>
+
+		<!-- ================= RECOMMENDATIONS ================= -->
+		<section id="recommendations" aria-labelledby="recs-heading">
+			<div class="section-head">
+				<h2 id="recs-heading">References</h2>
+				<span class="count">Sourced from LinkedIn</span>
+			</div>
+			<div class="recs" id="recsGrid">
+				<div class="rec">
+					<blockquote>Josh is a 10/10 on every scale. Finding a true self-starter these days is difficult; he solves any challenge put in front of him, and if he has to learn a new skill completely on his own, he does it joyfully.</blockquote>
+					<cite><strong>Ryan Morris</strong> · Senior Customer Training Architect</cite>
+				</div>
+				<div class="rec">
+					<blockquote>On several occasions, he presented ideas that not only improved the flow of the platform, but dramatically changed the look and feel in a beautiful and engaging way.</blockquote>
+					<cite><strong>Terry Lydon</strong> · CEO &amp; former CTO, Litmos</cite>
+				</div>
+				<div class="rec">
+					<blockquote>His innovative and intuitive improvements to our dated UI allowed customers to rapidly adopt and enjoy our platform. His versatility and impact make him a valuable asset to any organization.</blockquote>
+					<cite><strong>Adrien Samonek</strong> · Product Lead, LCvista</cite>
+				</div>
+				<div class="rec">
+					<blockquote>Josh is a designer who is empathetic to customer needs and creates engaging, user-friendly designs that are simple to use. A great team player and a joy to work with.</blockquote>
+					<cite><strong>Ramyaa Narayanan</strong> · Sr. Product Manager</cite>
+				</div>
+				<div class="rec rec-extra">
+					<blockquote>His designs are top-notch, and he gets what users need. Josh's work always stands out; he brings a lot of creativity and insight to every project.</blockquote>
+					<cite><strong>Raman Khenanisho</strong> · Sr. Solutions Architect, Litmos</cite>
+				</div>
+				<div class="rec rec-extra">
+					<blockquote>Right off the bat you can tell when someone has a spark of creativity, and Josh has it. He has a great eye for design and real knowledge in the production of good content.</blockquote>
+					<cite><strong>Chase Mallow</strong> · Video Communications Specialist</cite>
+				</div>
+				<div class="rec rec-extra">
+					<blockquote>Josh is extremely creative and was my go-to designer to think outside the box and create engaging, exciting content.</blockquote>
+					<cite><strong>Emily Seo</strong> · Consumer Marketing Manager, ZELTIQ</cite>
+				</div>
+				<div class="rec rec-extra">
+					<blockquote>Look no further, stop your search. I rarely meet someone as capable, efficient, and eager to please. He took our very specific ideas and brought them to life.</blockquote>
+					<cite><strong>Kellie Owen</strong> · Owner, Integral Landscapes LLC</cite>
+				</div>
+				<div class="rec rec-extra">
+					<blockquote>By the time 90% of them responded, I was already hiring Josh for the second time. His work is clean, and he's beaten every deadline I've set for him.</blockquote>
+					<cite><strong>David Martin Owen</strong> · Owner, Right Noise Productions</cite>
+				</div>
+			</div>
+			<button class="show-more-btn" id="recsToggle" type="button" aria-expanded="false" aria-controls="recsGrid">
+				<span class="label">Show 5 more references</span>
+				<span class="icon" aria-hidden="true">+</span>
+			</button>
+			<p class="recs-source">All nine sourced from <a href="https://www.linkedin.com/in/bartondesigns/details/recommendations" target="_blank" rel="noopener">LinkedIn</a></p>
+		</section>
+
+		<div class="section-gap"></div>
+	</main>
+
+	<!-- ================= CONTACT ================= -->
+	<footer id="contact">
+		<div class="footer-inner">
+			<p class="cta">Let's make<br>something <span>at scale.</span></p>
+			<div class="contact-rows">
+				<a href="mailto:joshbarton1921@gmail.com?subject=Hi%20Josh!">
+					<span class="label">Email</span>
+					<span class="value">joshbarton1921@gmail.com</span>
+				</a>
+				<a href="https://www.linkedin.com/in/bartondesigns/" target="_blank" rel="noopener">
+					<span class="label">LinkedIn</span>
+					<span class="value">/in/bartondesigns</span>
+				</a>
+			</div>
+			<div class="colophon">
+				<span>© <span id="year">2026</span> Josh Barton · SF Bay Area</span>
+				<span>Designed &amp; built by hand (with a little AI)</span>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		// Keep copyright year current
+		document.getElementById('year').textContent = new Date().getFullYear();
+
+		/* ------------------------------------------------------------
+		   Site search: indexes every case study, capability, and
+		   reference at load. Multi-term queries match with AND logic;
+		   clicking a result opens the item and scrolls to it.
+		   ------------------------------------------------------------ */
+		const searchInput = document.getElementById('siteSearch');
+		const searchResults = document.getElementById('searchResults');
+		const searchLive = document.getElementById('searchLive');
+
+		function collapseWs(s) {
+			return s.replace(/\s+/g, ' ').trim();
+		}
+
+		const searchIndex = [];
+		document.querySelectorAll('#work details.work-item').forEach(function (el) {
+			searchIndex.push({
+				el: el,
+				isDetails: true,
+				label: 'Work ' + el.querySelector('.num').textContent,
+				title: collapseWs(el.querySelector('.title').textContent),
+				text: collapseWs(el.textContent)
+			});
+		});
+		document.querySelectorAll('#lab details.work-item').forEach(function (el) {
+			searchIndex.push({
+				el: el,
+				isDetails: true,
+				label: 'The Lab',
+				title: collapseWs(el.querySelector('.title').textContent),
+				text: collapseWs(el.textContent)
+			});
+		});
+		document.querySelectorAll('#capabilities .cap').forEach(function (el) {
+			searchIndex.push({
+				el: el,
+				isDetails: false,
+				label: 'Capability',
+				title: collapseWs(el.querySelector('h3').textContent),
+				text: collapseWs(el.textContent)
+			});
+		});
+		document.querySelectorAll('#recommendations .rec').forEach(function (el) {
+			searchIndex.push({
+				el: el,
+				isDetails: false,
+				label: 'Reference',
+				title: collapseWs(el.querySelector('cite').textContent),
+				text: collapseWs(el.textContent)
+			});
+		});
+
+		function escapeHtml(s) {
+			return s.replace(/[&<>"]/g, function (c) {
+				return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+			});
+		}
+		function escapeRegex(s) {
+			return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+		}
+
+		function highlight(text, terms) {
+			const pattern = new RegExp('(' + terms.map(escapeRegex).join('|') + ')', 'gi');
+			return escapeHtml(text).replace(pattern, '<mark>$1</mark>');
+		}
+
+		function makeSnippet(text, terms) {
+			const lower = text.toLowerCase();
+			let first = -1;
+			terms.forEach(function (t) {
+				const pos = lower.indexOf(t.toLowerCase());
+				if (pos !== -1 && (first === -1 || pos < first)) first = pos;
+			});
+			if (first === -1) first = 0;
+			const start = Math.max(0, first - 55);
+			const end = Math.min(text.length, first + 120);
+			let snip = text.slice(start, end);
+			if (start > 0) snip = '…' + snip;
+			if (end < text.length) snip = snip + '…';
+			return highlight(snip, terms);
+		}
+
+		function runSearch(query) {
+			const terms = query.trim().split(/\s+/).filter(function (t) { return t.length >= 2; });
+			if (!terms.length) {
+				searchResults.hidden = true;
+				searchResults.innerHTML = '';
+				return;
+			}
+			const hits = [];
+			searchIndex.forEach(function (item) {
+				const textLower = item.text.toLowerCase();
+				const allMatch = terms.every(function (t) { return textLower.indexOf(t.toLowerCase()) !== -1; });
+				if (!allMatch) return;
+				let score = 0;
+				const titleLower = item.title.toLowerCase();
+				terms.forEach(function (t) {
+					if (titleLower.indexOf(t.toLowerCase()) !== -1) score += 3;
+					score += 1;
+				});
+				hits.push({ item: item, score: score });
+			});
+			hits.sort(function (a, b) { return b.score - a.score; });
+			const top = hits.slice(0, 8);
+
+			if (!top.length) {
+				searchResults.innerHTML = '<p class="sr-empty">No matches for "' + escapeHtml(query.trim()) + '"</p>';
+				searchResults.hidden = false;
+				searchLive.textContent = 'No results';
+				return;
+			}
+			const list = document.createElement('ul');
+			top.forEach(function (hit) {
+				const li = document.createElement('li');
+				li.className = 'search-result';
+				const btn = document.createElement('button');
+				btn.type = 'button';
+				btn.innerHTML =
+					'<span class="sr-label">' + escapeHtml(hit.item.label) + '</span>' +
+					'<span class="sr-title">' + highlight(hit.item.title, terms) + '</span>' +
+					'<p class="sr-snippet">' + makeSnippet(hit.item.text, terms) + '</p>';
+				btn.addEventListener('click', function () { goToResult(hit.item); });
+				li.appendChild(btn);
+				list.appendChild(li);
+			});
+			searchResults.innerHTML = '';
+			searchResults.appendChild(list);
+			searchResults.hidden = false;
+			searchLive.textContent = top.length + ' result' + (top.length === 1 ? '' : 's');
+		}
+
+		function goToResult(item) {
+			searchResults.hidden = true;
+			searchInput.blur();
+			if (item.isDetails) item.el.open = true;
+			requestAnimationFrame(function () {
+				item.el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				item.el.classList.remove('hit-flash');
+				void item.el.offsetWidth;	/* restart animation */
+				item.el.classList.add('hit-flash');
+			});
+		}
+
+		let searchDebounce;
+		searchInput.addEventListener('input', function () {
+			clearTimeout(searchDebounce);
+			searchDebounce = setTimeout(function () { runSearch(searchInput.value); }, 120);
+		});
+		searchInput.addEventListener('focus', function () {
+			if (searchInput.value.trim().length >= 2) runSearch(searchInput.value);
+		});
+		searchInput.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape') {
+				searchResults.hidden = true;
+				searchInput.blur();
+			} else if (e.key === 'Enter') {
+				const first = searchResults.querySelector('button');
+				if (first) first.click();
+			} else if (e.key === 'ArrowDown') {
+				const first = searchResults.querySelector('button');
+				if (first) { e.preventDefault(); first.focus(); }
+			}
+		});
+		searchResults.addEventListener('keydown', function (e) {
+			const buttons = Array.from(searchResults.querySelectorAll('button'));
+			const idx = buttons.indexOf(document.activeElement);
+			if (e.key === 'ArrowDown' && idx > -1 && idx < buttons.length - 1) {
+				e.preventDefault(); buttons[idx + 1].focus();
+			} else if (e.key === 'ArrowUp' && idx > 0) {
+				e.preventDefault(); buttons[idx - 1].focus();
+			} else if (e.key === 'ArrowUp' && idx === 0) {
+				e.preventDefault(); searchInput.focus();
+			} else if (e.key === 'Escape') {
+				searchResults.hidden = true;
+				searchInput.focus();
+			}
+		});
+		document.addEventListener('click', function (e) {
+			if (!e.target.closest('.search-wrap')) searchResults.hidden = true;
+		});
+
+
+
+		/* ------------------------------------------------------------
+		   BARTON brand-color cycle. Josh's work history in sequence:
+		   Apple rainbow → PayPal navy → Google logo → Levi's red → SAP gradient
+		   ------------------------------------------------------------ */
+		const BRAND_SCHEMES = [
+			// Apple logo rainbow, stripe order end to end
+			['#61BB46', '#FDB827', '#F5821F', '#E03A3E', '#963D97', '#009DDC'],
+			// PayPal dark blue (#003087)
+			['#003087', '#003087', '#003087', '#003087', '#003087', '#003087'],
+			// Google logo mapping: G-blue, o-red, o-yellow, g-blue, l-green, e-red
+			['#4285F4', '#EA4335', '#FBBC05', '#4285F4', '#34A853', '#EA4335'],
+			// Levi's red (PMS 187 C, #A8112E)
+			['#A8112E', '#A8112E', '#A8112E', '#A8112E', '#A8112E', '#A8112E'],
+			// SAP logo gradient, #00B7F0 → #1C64BE across the letters
+			['#00B7F0', '#06A6E6', '#0B96DC', '#1185D2', '#1675C8', '#1C64BE']
+		];
+
+		const brandLetters = document.querySelectorAll('#brandCycle span');
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		let schemeIndex = 0;
+
+		function applyScheme(index) {
+			const scheme = BRAND_SCHEMES[index];
+			brandLetters.forEach(function (letter, i) {
+				letter.style.color = scheme[i];
+			});
+		}
+
+		applyScheme(0);
+		if (!reduceMotion) {
+			setInterval(function () {
+				schemeIndex = (schemeIndex + 1) % BRAND_SCHEMES.length;
+				applyScheme(schemeIndex);
+			}, 3500);
+		}
+
+		// Reveal the remaining 5 references in place
+		const recsGrid = document.getElementById('recsGrid');
+		const recsToggle = document.getElementById('recsToggle');
+		recsToggle.addEventListener('click', function () {
+			const expanded = recsGrid.classList.toggle('show-all');
+			recsToggle.setAttribute('aria-expanded', String(expanded));
+			recsToggle.querySelector('.label').textContent = expanded
+				? 'Show fewer references'
+				: 'Show 5 more references';
+		});
+
+		// Close other case studies when one opens (accordion behavior).
+		// Comment this block out if you'd rather allow multiple open at once.
+		const items = document.querySelectorAll('.work-item');
+		items.forEach(function (item) {
+			item.addEventListener('toggle', function () {
+				if (item.open) {
+					items.forEach(function (other) {
+						if (other !== item && other.open) {
+							other.open = false;
+						}
+					});
+					// Keep the opened row in view after siblings collapse
+					requestAnimationFrame(function () {
+						const rect = item.getBoundingClientRect();
+						if (rect.top < 70) {
+							item.scrollIntoView({ block: 'start', behavior: 'smooth' });
+						}
+					});
+				}
+			});
+		});
+	</script>
+
+	<script>
+		// Load the heavy Level 99 Bard iframe after the portfolio page itself is ready,
+		// so the synth is already warming up by the time this section is reached.
+		(function () {
+			function loadLevel99Bard() {
+				const frame = document.querySelector('.l99-full-frame iframe[data-src]');
+				if (!frame || frame.src) return;
+				frame.src = frame.dataset.src;
+			}
+			function scheduleLoad() {
+				if ('requestIdleCallback' in window) {
+					requestIdleCallback(loadLevel99Bard, { timeout: 1500 });
+				} else {
+					setTimeout(loadLevel99Bard, 350);
+				}
+			}
+			if (document.readyState === 'complete') scheduleLoad();
+			else window.addEventListener('load', scheduleLoad, { once: true });
+		})();
+	</script>
+</body>
+</html>
