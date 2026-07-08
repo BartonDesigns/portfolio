@@ -1,2 +1,2 @@
 # portfolio
-Josh Barton's Portfolio
+Josh Barton's Portfolio.
