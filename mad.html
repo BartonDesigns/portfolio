@@ -599,11 +599,20 @@
     }
 
     .resource h3 {
+        display: flex;
+        align-items: center;
+        gap: 9px;
         font-family: var(--display);
         font-weight: 700;
         font-size: 1.08rem;
         margin-bottom: 6px;
         color: var(--gold-ink);
+    }
+
+    .resource-icon {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
     }
 
     .resource p { color: var(--tan-dim); font-size: 0.9rem; }
@@ -668,9 +677,12 @@
 
     .footer-inner img { height: 58px; }
 
-    .footer-social { display: flex; gap: 18px; }
+    .footer-social { display: flex; gap: 26px; }
 
     .footer-social a {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
         color: var(--tan-dim);
         text-decoration: none;
         font-size: 0.92rem;
@@ -678,6 +690,12 @@
         letter-spacing: 0.06em;
         text-transform: uppercase;
         transition: color 0.25s ease;
+    }
+
+    .social-icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
     }
 
     .footer-social a:hover { color: var(--flame); }
@@ -836,36 +854,36 @@
         <h2 class="reveal">Upcoming events</h2>
         <p class="section-intro reveal">Meetings are announced on our Facebook page and club email. Want the invite in your inbox? Email a club officer and we'll add you to the list.</p>
         <div class="event-list">
-            <a class="event reveal" href="https://madzymurgists.com/mad_z_events">
+            <a class="event reveal" href="https://www.facebook.com/groups/madzymurgists">
                 <div class="event-date">
                     <span class="month">Sep</span>
                     <span class="day">10</span>
                 </div>
                 <div class="event-body">
                     <h3>September Club Meeting</h3>
-                    <p>6:30 pm to 8:30 pm &middot; Location announced via Facebook and club email</p>
+                    <p>6:30 pm to 8:30 pm &middot; Hopyard Alehouse, Pleasanton</p>
                 </div>
                 <span class="event-arrow">&rarr;</span>
             </a>
-            <a class="event reveal" href="https://madzymurgists.com/mad_z_events">
+            <a class="event reveal" href="https://www.facebook.com/groups/madzymurgists">
                 <div class="event-date">
                     <span class="month">Oct</span>
                     <span class="day">8</span>
                 </div>
                 <div class="event-body">
                     <h3>October Club Meeting</h3>
-                    <p>6:30 pm to 8:30 pm &middot; BottleTaps, 3020 Bernal Ave Suite 160, Pleasanton</p>
+                    <p>6:30 pm to 8:30 pm &middot; Location TBD, watch Facebook and club email</p>
                 </div>
                 <span class="event-arrow">&rarr;</span>
             </a>
-            <a class="event reveal" href="https://madzymurgists.com/mad_z_events">
+            <a class="event reveal" href="https://www.facebook.com/groups/madzymurgists">
                 <div class="event-date">
-                    <span class="month">Oct</span>
-                    <span class="day">18</span>
+                    <span class="month">Nov</span>
+                    <span class="day">12</span>
                 </div>
                 <div class="event-body">
-                    <h3>Oaktoberfest Homebrew Competition</h3>
-                    <p>Club-organized competition, entries and judging details to come</p>
+                    <h3>November Club Meeting</h3>
+                    <p>6:30 pm to 8:30 pm &middot; Location TBD, watch Facebook and club email</p>
                 </div>
                 <span class="event-arrow">&rarr;</span>
             </a>
@@ -908,12 +926,12 @@
                 <h3>Club Charter (PDF)</h3>
                 <p>Print a copy and file the club agreement page with our Secretary.</p>
             </a>
-            <a class="resource reveal" href="https://join.slack.com/t/mad-zymurgists/shared_invite/zt-2d5pkehmr-eecmrb8eHJWi7p8QgaU8lg">
-                <h3>Slack Channel</h3>
-                <p>Join the club mailing list and get minutes from every meeting.</p>
+            <a class="resource reveal" href="https://mad-zymurgists.slack.com/join/shared_invite/zt-47lxqkccw-gSjY7kL9cCy2aY~a7iJYzw">
+                <h3><svg class="resource-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.268 0a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zm-2.523 10.122a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zm0-1.268a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>Slack Channel</h3>
+                <p>Join the club workspace for the mailing list and minutes from every meeting.</p>
             </a>
-            <a class="resource reveal" href="https://www.facebook.com/groups/madzymurgists/">
-                <h3>Facebook Group</h3>
+            <a class="resource reveal" href="https://www.facebook.com/groups/madzymurgists">
+                <h3><svg class="resource-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook Group</h3>
                 <p>Meeting announcements, event postings, and member discussion.</p>
             </a>
             <a class="resource reveal" href="http://www.homebrewersassociation.org/support-the-aha/?promo=The-Mad-Zymurgists-Homebrew-Club">
@@ -930,23 +948,28 @@
         <div class="officer-grid">
             <div class="officer reveal">
                 <span class="role">President</span>
-                <span class="name">Eric Wall</span>
-                <a href="mailto:president@madzymurgists.com">president@madzymurgists.com</a>
+                <span class="name">Ron Kraft</span>
+                <a href="mailto:homebrewguy70@gmail.com">homebrewguy70@gmail.com</a>
             </div>
             <div class="officer reveal">
                 <span class="role">Vice President</span>
-                <span class="name">Brian Cooper</span>
-                <a href="mailto:vp@madzymurgists.com">vp@madzymurgists.com</a>
+                <span class="name">Jon Koerber</span>
+                <a href="mailto:jkoerber@gmail.com">jkoerber@gmail.com</a>
             </div>
             <div class="officer reveal">
                 <span class="role">Secretary</span>
-                <span class="name">Anthony "Tony" DeAndrade</span>
-                <a href="mailto:secretary@madzymurgists.com">secretary@madzymurgists.com</a>
+                <span class="name">Greg Lingenfelder</span>
+                <a href="mailto:gregl819@sbcglobal.net">gregl819@sbcglobal.net</a>
             </div>
             <div class="officer reveal">
-                <span class="role">Treasurer</span>
-                <span class="name">Jason Engelbertson</span>
-                <a href="mailto:treasurer@madzymurgists.com">treasurer@madzymurgists.com</a>
+                <span class="role">Secretary</span>
+                <span class="name">Alex Mintz</span>
+                <a href="mailto:ajmintz4@gmail.com">ajmintz4@gmail.com</a>
+            </div>
+            <div class="officer reveal">
+                <span class="role">Founder &middot; Beer Judging &middot; President Emeritus</span>
+                <span class="name">Brian Cooper</span>
+                <a href="mailto:brewerbrian70@gmail.com">brewerbrian70@gmail.com</a>
             </div>
         </div>
     </section>
@@ -957,9 +980,18 @@
     <div class="footer-inner">
         <img src="https://madzymurgists.com/wp-content/uploads/2016/01/Mad-Z-Logo-Text-Color.png" alt="Mad Zymurgists logo">
         <div class="footer-social">
-            <a href="https://www.facebook.com/groups/madzymurgists/">Facebook</a>
-            <a href="https://www.instagram.com/madzymurgists/">Instagram</a>
-            <a href="mailto:president@madzymurgists.com">Email</a>
+            <a href="https://www.facebook.com/groups/madzymurgists" aria-label="Mad Zymurgists Facebook group">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span>Facebook</span>
+            </a>
+            <a href="https://mad-zymurgists.slack.com/join/shared_invite/zt-47lxqkccw-gSjY7kL9cCy2aY~a7iJYzw" aria-label="Mad Zymurgists Slack workspace">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.268 0a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zm-2.523 10.122a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zm0-1.268a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>
+                <span>Slack</span>
+            </a>
+            <a href="mailto:homebrewguy70@gmail.com" aria-label="Email the club president">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+                <span>Email</span>
+            </a>
         </div>
     </div>
     <p class="footer-legal">Copyright 2026 Mad Zymurgists. All rights reserved. Please enjoy homebrewed beverages responsibly.</p>
